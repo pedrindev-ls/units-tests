@@ -1,5 +1,3 @@
-/* eslint-disable sonarjs/cognitive-complexity */
-/* eslint-disable complexity */
 /*
   Implemente a função calculator que recebe dois números inteiros como parâmetro e retorna um objeto com as seguintes chaves:
     - sum;
@@ -46,21 +44,15 @@ const calculator = (number1, number2) => {
 };
 
 const arrayGenerator = (type, object) => {
-  let array = [];
-  if (type === 'keys') {
-    for (let index = 0; index < Object.keys(object).length; index += 1) {
-      array.push(Object.keys(object)[index]);
-    }
-  } else if (type === 'values') {
-    for (let index = 0; index < Object.values(object).length; index += 1) {
-      array.push(Object.values(object)[index]);
-    }
-  } else if (type === 'entries') {
-    for (let index = 0; index < Object.entries(object).length; index += 1) {
-      array.push(Object.entries(object)[index]);
-    }
+  switch (type) {
+    case 'keys':
+      return Object.keys(object);
+    case 'values':
+      return Object.values(object);
+    case 'entries':
+      return Object.entries(object);
+    default:
   }
-  return array;
 };
 
 module.exports = { calculator, arrayGenerator };
